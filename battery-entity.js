@@ -25,7 +25,7 @@ class BatteryEntity extends Polymer.Element {
 				line-height: 40px;
 			}
 			.good {
-				color: var(--label-badge-green);
+				color: var(--state-icon-color);
 			}
 			.warning {
 				color: var(--label-badge-yellow);
