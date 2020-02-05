@@ -15,7 +15,7 @@ A custom [Lovelace](https://www.home-assistant.io/lovelace/) component for displ
 
   ```yaml
   resources:
-    - url: /local/battery-entity.js?v=0.1
+    - url: /local/battery-entity.js?v=0.2
       type: module
   ```
 
@@ -58,6 +58,7 @@ resources:
 |------|------|---------|-------|---------|-------------|
 | type | string | **required** | v0.1 | | `custom:battery-entity`
 | entity | string | **required** | v0.1 | | An entity_id that has a percentage as a state.
+| attributes | string | optional | v0.2 | battery_level | attributes to get battery level from. Use comma to seperate. If can't get from attributes, it will use state as battery level.
 | name | string | optional | v0.1 | *friendly_name* | Override the entities friendly name.
 | warning | integer | optional | v0.1 | 35 | Sets the level at which the battery icon will be shown as yellow.
 | critical | integer | optional | v0.1 | 15 | Sets the level at which the battery icon will be shown as red.
@@ -69,6 +70,7 @@ resources:
 ```yaml
 - type: custom:battery-entity
   entity: sensor.front_door_lock_battery
+  attributes: battery_level,battery 
 ```
 
 ## License

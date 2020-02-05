@@ -69,11 +69,16 @@ class BatteryEntity extends Polymer.Element {
 	}
 
 	getBatteryLevel() {
-		let batteryValue = this.stateObj.state;
-		if (this.stateObj.attributes.battery) batteryValue = this.stateObj.attributes.battery;
-		if (this.stateObj.attributes.battery_level) batteryValue = this.stateObj.attributes.battery_level;
-		return Number.isFinite(parseInt(batteryValue))
-			? parseInt(Math.round(batteryValue), 10)
+        const attribs = (this._config.attributes || 'battery_level').split(',');
+        var i;
+        for (i = 0; i < attribs.length; i++) {
+            if (typeof stateObj.attributes[attribs[i]] === "undefined") continue;
+            return Number.isFinite(parseInt(stateObj.attributes[attribs[i]]))
+                ? parseInt(Math.round(stateObj.attributes[attribs[i]]), 10)
+                : 0;
+        }
+		return Number.isFinite(parseInt(this.stateObj.state))
+			? parseInt(Math.round(this.stateObj.state), 10)
 			: 0;
 	}
 
